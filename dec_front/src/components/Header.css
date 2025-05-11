@@ -17,6 +17,12 @@
   flex-grow: 1;
 }
 
+.navbar .logo img {
+  width: 80px; 
+  height: auto;
+  margin-right: 20px;
+}
+
 .navbar a {
   margin: 0 15px;
   text-decoration: none;
@@ -63,3 +69,4 @@
   font-weight: bold;
   color: #ff7f00; /* Couleur orange chic */
 }
+

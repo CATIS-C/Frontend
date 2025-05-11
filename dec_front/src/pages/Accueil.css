@@ -1,120 +1,103 @@
-/* Conteneur principal de la page */
-.home-container {
-  width: 100%;
-  height: 100vh;
+.home-wrapper {
+  padding: 40px;
+  font-family: Arial, sans-serif;
+  background-color: #f7f9fc;
+}
+
+.welcome-section {
+  background: linear-gradient(to right, #ff6f00, #ffcc80);
+  color: white;
+  padding: 28px 40px 22px 40px; /* padding réduit */
+  border-radius: 16px;
+  margin-bottom: 40px;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+  text-align: center; 
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: 30px;
-  background-color: #f7f7f7;
+}
+
+.welcome-section h1 {
+  font-size: 1.7rem; /* taille réduite */
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.welcome-section p {
+  font-size: 1.08rem;
+  color: #f7f9fc;
+  max-width: 700px;
+  line-height: 1.6;
+  margin: 0 auto;           
+  font-weight: 400;
   text-align: center;
-  font-family: 'Arial', sans-serif;
 }
 
-/* Titre principal */
-.home-container h1 {
-  font-size: 36px;
-  color: #333;
-  margin-bottom: 20px;
-  font-weight: bold;
-  letter-spacing: 2px;
+
+@media (max-width: 700px) {
+  .welcome-section {
+    padding: 18px 10px 16px 10px;
+  }
+  .welcome-section h1 {
+    font-size: 1.15rem;
+  }
 }
 
-/* Description du système */
-.home-container p {
-  font-size: 18px;
-  color: #666;
-  margin-bottom: 30px;
+
+
+.stats-section {
+  text-align: center;
+  margin-bottom: 50px;
 }
 
-/* Conteneur de la barre de recherche */
-.search-container {
-  margin-top: 30px;
-  width: 100%;
-  max-width: 500px;
+.stat-cards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
 }
 
-.search-input {
-  width: 100%;
-  padding: 15px;
-  font-size: 16px;
-  border: 2px solid #ff7f00;
-  border-radius: 8px;
-  outline: none;
-  transition: all 0.3s ease;
+.stat-card {
+  background-color: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+  min-width: 200px;
+  transition: transform 0.3s;
 }
 
-.search-input:focus {
-  border-color: #ff4500; /* Couleur orange foncé */
-  box-shadow: 0 0 8px rgba(255, 69, 0, 0.5);
-}
-
-/* Section des informations avec une liste */
-.info-container {
-  margin-top: 50px;
-  font-size: 18px;
-  max-width: 600px;
-}
-
-.features-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-.features-list li {
-  margin: 20px 0;
-}
-
-/* Boutons des fonctionnalités */
-.feature-button {
-  background-color: #ff7f00;
-  color: white;
-  padding: 12px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.feature-button:hover {
-  background-color: #ff4500;
+.stat-card:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.feature-button:focus {
-  outline: none;
+.stat-card h3 {
+  font-size: 2.5rem;
+  color: #ff6f00; /* Orange clair */
+  margin-bottom: 5px;
 }
 
-/* Effet de transition pour les éléments de la page */
-.home-container h1,
-.home-container p,
-.info-container h2 {
-  opacity: 0;
-  animation: fadeIn 1s forwards;
+.stat-card p {
+  font-size: 1.1rem;
+  color: #333;
 }
 
-.home-container h1 {
-  animation-delay: 0.2s;
+.charts-section {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
 }
 
-.home-container p {
-  animation-delay: 0.5s;
+.chart-bar {
+  fill: #ff9f00; /* Couleur des barres pour les pré-déclassements */
 }
 
-.info-container h2 {
-  animation-delay: 0.8s;
-}
-
-/* Animation pour faire apparaître les éléments */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.chart-bar-declassement {
+  fill: #ffcc80; /* Couleur des barres pour les déclassements */
 }

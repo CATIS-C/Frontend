@@ -17,6 +17,10 @@ const Header = () => {
   return (
     <header className="header">
       <div className="navbar">
+
+      <div className="logo">
+          <img src={require('../images/logo.png')} alt="Attijariwafa Bank" />
+        </div>
         <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
           Accueil
         </Link>

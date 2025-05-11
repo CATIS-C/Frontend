@@ -6,6 +6,7 @@ import CreditsAmortissablesGeresSurLS from './pages/CreditsAmortissablesGeresSur
 import ComptabilisationDossierRisque from './pages/ComptabilisationDossierRisque';
 import SuiviRelationDifficulte from './pages/SuiviRelationDifficulte';
 import ListeEcrituresComptables from './pages/ListeEcrituresComptables';
+import ConsultationContratLS from './pages/ConsultationContratLS';
 import Accueil from './pages/Accueil';
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/cdr" component={ComptabilisationDossierRisque} />
         <Route path="/srd" component={SuiviRelationDifficulte} />
         <Route path="/lec" component={ListeEcrituresComptables} />
+        <Route path="/consulter" component={ConsultationContratLS} />
       </Switch>
     </Router>
   );
