@@ -5,7 +5,7 @@
 }
 
 .welcome-section {
-  background: linear-gradient(to right, #ff6f00, #ffcc80);
+  background: white;
   color: white;
   padding: 28px 40px 22px 40px; /* padding réduit */
   border-radius: 16px;
@@ -24,13 +24,13 @@
   font-size: 1.7rem; /* taille réduite */
   font-weight: 700;
   margin-bottom: 12px;
-  color: #fff;
+  color: black;
   letter-spacing: 0.5px;
 }
 
 .welcome-section p {
   font-size: 1.08rem;
-  color: #f7f9fc;
+  color: #0b0c0c;
   max-width: 700px;
   line-height: 1.6;
   margin: 0 auto;           
