@@ -5,7 +5,6 @@ const CreditsAmortissablesGeresSurLS = () => {
   const [identifiant, setIdentifiant] = useState('ID-00123');
   const [compte, setCompte] = useState('456789001234');
   const [raisonSociale, setRaisonSociale] = useState('Société XYZ');
-  const [preDeclassement, setPreDeclassement] = useState('O');
   const [dossier, setDossier] = useState('DOS-789456');
 
   const [credits, setCredits] = useState([
@@ -49,14 +48,6 @@ const CreditsAmortissablesGeresSurLS = () => {
           <label>Raison Sociale:</label>
           <input type="text" value={raisonSociale} readOnly />
         </div>
-        <div className="input-row">
-          <label>Pré-déclassement:</label>
-          <input
-            type="text"
-            value={preDeclassement}
-            onChange={e => setPreDeclassement(e.target.value)}
-          />
-        </div>
       </div>
 
       <table>
@@ -89,6 +80,10 @@ const CreditsAmortissablesGeresSurLS = () => {
           )}
         </tbody>
       </table>
+
+      <div className="btn-container">
+        <button className="back-btn">Pré-déclasser</button>
+      </div>
     </div>
   );
 };

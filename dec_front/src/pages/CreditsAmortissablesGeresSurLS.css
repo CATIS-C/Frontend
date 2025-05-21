@@ -23,3 +23,28 @@ h1 {
   font-size: 24px;
   margin-bottom: 20px;
 }
+
+
+/* Boutons */
+.btn-container,
+.center-btn-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.back-btn {
+  padding: 12px 25px;
+  background-color: #ff9900;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #e68900;
+}
