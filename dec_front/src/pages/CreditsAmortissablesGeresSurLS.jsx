@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { fetchCreditsClient, preDeclasser } from '../services/creditService';
 import './CreditsAmortissablesGeresSurLS.css';
 
 const CreditsAmortissablesGeresSurLS = () => {
@@ -6,33 +7,34 @@ const CreditsAmortissablesGeresSurLS = () => {
   const [compte, setCompte] = useState('456789001234');
   const [raisonSociale, setRaisonSociale] = useState('Société XYZ');
   const [dossier, setDossier] = useState('DOS-789456');
-
-  const [credits, setCredits] = useState([
-    {
-      numeroContrat: 'C123456',
-      sequence: 'SEQ001',
-      reference: 'REF001',
-      libelleProduit: 'Crédit Immobilier',
-      montant: 150000,
-      capitalRestantDu: 60000
-    },
-    {
-      numeroContrat: 'C789012',
-      sequence: 'SEQ002',
-      reference: 'REF002',
-      libelleProduit: 'Crédit Auto',
-      montant: 90000,
-      capitalRestantDu: 35000
-    }
-  ]);
+  const [credits, setCredits] = useState([]);
 
   useEffect(() => {
-    // Simuler une récupération de données ici
+    
   }, []);
+
+  const handleSearch = async () => {
+    try {
+      const data = await fetchCreditsClient('typeRef', 'numRef');
+      setCredits(data);
+    } catch (error) {
+      alert('Erreur lors de la recherche des crédits');
+    }
+  };
+
+  const handlePreDeclasser = async () => {
+    try {
+      await preDeclasser(credits);
+      alert('Pré-déclassement effectué avec succès.');
+    } catch (error) {
+      alert('Erreur lors du pré-déclassement');
+    }
+  };
 
   return (
     <div className="credits-amortissables">
       <h1>Crédits Amortissables Gérés sur LS</h1>
+
       <div className="form-section">
         <div className="input-row">
           <label>Identifiant:</label>
@@ -48,6 +50,10 @@ const CreditsAmortissablesGeresSurLS = () => {
           <label>Raison Sociale:</label>
           <input type="text" value={raisonSociale} readOnly />
         </div>
+      </div>
+
+      <div className="btn-container">
+        <button className="back-btn" onClick={handleSearch}>Rechercher</button>
       </div>
 
       <table>
@@ -82,7 +88,7 @@ const CreditsAmortissablesGeresSurLS = () => {
       </table>
 
       <div className="btn-container">
-        <button className="back-btn">Pré-déclasser</button>
+        <button className="back-btn" onClick={handlePreDeclasser}>Pré-déclasser</button>
       </div>
     </div>
   );
