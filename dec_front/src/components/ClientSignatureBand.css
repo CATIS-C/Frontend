@@ -1,5 +1,5 @@
 .client-signature-band {
-  position: fixed;
+  position: sticky;
   background-color: #f8f9fa;
   border: 1px solid #ddd;
   border-radius: 8px;

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import ClientSignatureBand from '../components/ClientSignatureBand';
 import './SynthesePreDeclassement.css';
+import FooterActions from '../components/FooterActions';
 
 const SynthesePreDeclassement = () => {
   const [referenceClient, setReferenceClient] = useState('');
@@ -13,28 +14,28 @@ const SynthesePreDeclassement = () => {
 
   const natures = [
     { name: "Crédit Amortissables géré sur LS", path: "/credits-amortissables-geres-sur-ls", count: 2 },
-    { name: "Suspension Crédit Co-Finance", path: "/suspension-credit-co-finance", count: 3 },
+    { name: "Suspension Crédit Co-Finance", path: "/suspension-credit-co-finance", count: 0 },
     { name: "Crédit Amortissables géré sur SUPRA", path: "/credits-amortissables-geres-sur-supra", count: 7 },
-    { name: "CPI(s)/CVT(s)", path: "/cpi-cvt", count: 15 },
-    { name: "Compte(s) Secondaire(s)", path: "/comptes-secondaires", count: 4 },
-    { name: "Autres ASM", path: "/autres-asm", count: 8 },
-    { name: "ASM gérés sur LS", path: "/asm-geres-sur-ls", count: 12 },
-    { name: "Escompte(s)", path: "/escomptes", count: 6 },
-    { name: "Crédit AFM", path: "/credit-afm", count: 9 }
+    { name: "CPI(s)/CVT(s)", path: "/cpi-cvt", count: 0 },
+    { name: "Compte(s) Secondaire(s)", path: "/comptes-secondaires", count: 1 },
+    { name: "Autres ASM", path: "/autres-asm", count: 0 },
+    { name: "ASM gérés sur LS", path: "/asm-geres-sur-ls", count: 0 },
+    { name: "Escompte(s)", path: "/escomptes", count: 0 },
+    { name: "Crédit AFM", path: "/credit-afm", count: 0 }
   ];
 
- const groupedNatures = [];
-for (let i = 0; i < natures.length; i += 3) {
-  groupedNatures.push(natures.slice(i, i + 3));
-}
- 
+  const hist = useHistory();
+
+  const handleRetour = () => {
+    hist.goBack();
+  };
+
   return (
     <div className="container">
       <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '15px', fontWeight: 'bold' }}>
         <div>{currentDate} &nbsp; <span style={{ color: '#ff6600' }}>{currentTime}</span></div>
       </div>
-      
-      {/* Bande de signature réutilisable */}
+
       <ClientSignatureBand
         referenceClient={referenceClient}
         setReferenceClient={setReferenceClient}
@@ -43,25 +44,26 @@ for (let i = 0; i < natures.length; i += 3) {
         showSearchButton={false}
       />
 
-      {/* Grille de produits 2x2 */}
-      <div className="products-grid">
-        {groupedNatures.map((group, groupIndex) => (
-          <div key={groupIndex} className="products-row">
-            {group.map((nature, index) => (
-              <div key={index} className="product-card">
-                <div className="product-nature">
-                  <Link to={nature.path}>{nature.name}</Link>
-                </div>
-                <div className="product-count">{nature.count}</div>
+      <div className="synthese-section">
+        <h2 className="section-title">Produits</h2>
+        
+        <div className="products-list">
+          {natures.map((nature, index) => (
+            <div key={index} className="product-item">
+              <div className="product-info">
+                <Link to={nature.path} className="product-link">
+                  {nature.name}
+                </Link>
               </div>
-            ))}
-          </div>
-        ))}
+              <div className="product-badge">
+                <span className="count">{nature.count}</span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div className="btn-container">
-        <button className="back-btn">Retour</button>
-      </div>
+      <FooterActions onRetour={handleRetour} />
     </div>
   );
 };

@@ -24,7 +24,7 @@ body{
   display: flex;
   align-items: center;
   flex-grow: 1;
-  /* plus besoin de justify-content */
+ 
 }
 
 .navbar .logo img {
@@ -34,14 +34,14 @@ body{
 }
 
 .navbar a {
-  margin: 0 8px; /* réduit l'espace horizontal */
+  margin: 0 8px; 
   text-decoration: none;
   color: #333;
   font-weight: bold;
-  padding: 10px 15px; /* réduit le padding horizontal */
+  padding: 10px 15px;
   border-radius: 5px;
   transition: all 0.3s ease;
-  font-size: 14px; /* réduit la taille de la police */
+  font-size: 14px; 
 }
 
 .navbar a:hover {
@@ -56,7 +56,7 @@ body{
   border-radius: 5px;
 }
 
-/* --- Partie droite du menu (utilisateur, logout, mode sombre) --- */
+
 
 .header-right {
   display: flex;

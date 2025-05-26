@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { fetchCreditsClient, preDeclasser } from '../services/creditService';
 import ClientSignatureBand from '../components/ClientSignatureBand';
 import './CreditsAmortissablesGeresSurLS.css';
+import FooterActions from '../components/FooterActions';
 
 const CreditsAmortissablesGeresSurLS = () => {
   const [referenceClient, setReferenceClient] = useState('');
@@ -10,16 +11,14 @@ const CreditsAmortissablesGeresSurLS = () => {
   const [credits, setCredits] = useState([]);
 
   useEffect(() => {
-    // ici tu peux charger les données initiales ou mettre à jour la date/heure si besoin
+    
   }, []);
 
   const handleSearch = async () => {
     try {
       const data = await fetchCreditsClient('NumeroClient', '2208407');
       setCredits(data);
-      // Supposons que les données retournées contiennent aussi les infos client
-      // setCompte(data.compte);
-      // setRaisonSociale(data.raisonSociale);
+      
     } catch (error) {
       alert('Erreur lors de la recherche des crédits');
     }
@@ -36,7 +35,7 @@ const CreditsAmortissablesGeresSurLS = () => {
 
   return (
     <div className="credits-amortissables">
-      {/* Bande de signature réutilisable */}
+     
       <ClientSignatureBand
         referenceClient={referenceClient}
         setReferenceClient={setReferenceClient}
@@ -45,6 +44,9 @@ const CreditsAmortissablesGeresSurLS = () => {
         showSearchButton={true}
         onSearch={handleSearch}
       />
+      <div className="page-header">
+      <h2 className="page-title">Crédits Amortissables Gérés Sur LS</h2>
+    </div>
 
       <table>
         <thead>
@@ -77,9 +79,7 @@ const CreditsAmortissablesGeresSurLS = () => {
         </tbody>
       </table>
 
-      <div className="btn-container">
-        <button className="back-btn" onClick={handlePreDeclasser}>Pré-déclasser</button>
-      </div>
+      <FooterActions onPreDeclasser={handlePreDeclasser} />
     </div>
   );
 };

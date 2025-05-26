@@ -1,36 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Dropdown } from 'primereact/dropdown'; // pour toggle simple
-import { Tooltip } from 'primereact/tooltip';   // optionnel, pour tooltip
+import { Dropdown } from 'primereact/dropdown'; 
+import { Tooltip } from 'primereact/tooltip';   
 import './Header.css';
 
-// Simuler données utilisateur (à remplacer par récupération Keycloak)
+
 const user = {
   firstName: "Mohamed",
   lastName: "Mohamed",
 };
 
-// Fonction de logout (à adapter selon ton backend/Keycloak)
+
 const logout = () => {
-  // Exemple basique, remplacer par vrai logout Keycloak
+ 
   alert("Déconnexion en cours...");
-  // window.location.href = "/logout"; // ou redirection Keycloak
+ 
 };
 
 const Header = () => {
   const location = useLocation();
 
-  // State mode sombre
+
   const [darkMode, setDarkMode] = useState(false);
 
-  // Charger mode sombre depuis localStorage au montage
+ 
   useEffect(() => {
     const savedMode = localStorage.getItem('darkMode') === 'true';
     setDarkMode(savedMode);
     document.body.classList.toggle('dark-mode', savedMode);
   }, []);
 
-  // Toggle mode sombre
+
   const toggleDarkMode = () => {
     setDarkMode(prev => {
       localStorage.setItem('darkMode', !prev);
