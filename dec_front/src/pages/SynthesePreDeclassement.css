@@ -66,47 +66,46 @@ body, html {
   min-width: 200px;
 }
 
-/* Tableau moderne */
-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  font-size: 16px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+/* Grille de produits */
+.products-grid {
   margin-top: 25px;
 }
 
-table thead th {
-  background-color: #f2f2f2;
-  color: #333;
-  padding: 14px;
-  font-weight: 600;
-  text-align: left;
-  border-bottom: 2px solid #e0e0e0;
+.products-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
 }
 
-table td {
-  padding: 14px;
-  border-bottom: 1px solid #e0e0e0;
-  text-align: left;
-  background-color: #fff;
+.product-card {
+  flex: 1;
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
   transition: background-color 0.2s ease;
 }
 
-table tbody tr:hover {
+.product-card:hover {
   background-color: #f9f9f9;
 }
 
-/* Coins arrondis haut */
-table thead th:first-child {
-  border-top-left-radius: 12px;
+.product-nature {
+  flex: 1;
+  padding: 16px 20px;
+  border-right: 1px solid #e0e0e0;
 }
 
-table thead th:last-child {
-  border-top-right-radius: 12px;
+.product-count {
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f8f8;
+  font-weight: 600;
+  color: #ff6600;
+  font-size: 18px;
 }
 
 /* Liens noirs, même dans le tableau */
@@ -155,4 +154,3 @@ table td a:hover {
   color: black;
   text-decoration: underline;
 }
-

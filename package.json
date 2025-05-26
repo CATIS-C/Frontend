@@ -2,6 +2,8 @@
   "dependencies": {
     "axios": "^1.9.0",
     "chart.js": "^4.4.8",
+    "primeicons": "^4.1.0",
+    "primereact": "^6.6.0",
     "react-chartjs-2": "^5.3.0"
   }
 }

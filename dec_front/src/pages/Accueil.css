@@ -1,103 +1,90 @@
-.home-wrapper {
-  padding: 40px;
-  font-family: Arial, sans-serif;
-  background-color: #f7f9fc;
+.accueil-container {
+  padding: 2rem;
+  background: #fdfcfa;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.welcome-section {
-  background: white;
-  color: white;
-  padding: 28px 40px 22px 40px; /* padding réduit */
-  border-radius: 16px;
-  margin-bottom: 40px;
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.07);
-  text-align: center; 
+.charts-container {
   display: flex;
-  flex-direction: column;
+  gap: 2rem;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
-.welcome-section h1 {
-  font-size: 1.7rem; /* taille réduite */
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: black;
-  letter-spacing: 0.5px;
+.left-chart, .right-chart {
+  flex: 1 1 600px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  min-width: 600px;
 }
 
-.welcome-section p {
-  font-size: 1.08rem;
-  color: #0b0c0c;
-  max-width: 700px;
-  line-height: 1.6;
-  margin: 0 auto;           
-  font-weight: 400;
+h3 {
   text-align: center;
+  color: #444;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.scroll-panel {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding-bottom: 10px;
+}
+
+.scroll-panel::-webkit-scrollbar {
+  height: 10px;
+}
+
+.scroll-panel::-webkit-scrollbar-thumb {
+  background-color: #b5b2b2;
+  border-radius: 10px;
 }
 
 
-@media (max-width: 700px) {
-  .welcome-section {
-    padding: 18px 10px 16px 10px;
-  }
-  .welcome-section h1 {
-    font-size: 1.15rem;
-  }
+
+.scroll-arrow.left {
+  left: 10px;
 }
 
-
-
-.stats-section {
-  text-align: center;
-  margin-bottom: 50px;
+.scroll-arrow.right {
+  right: 10px;
 }
 
-.stat-cards {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-top: 20px;
-}
-
-.stat-card {
+.legend {
+  margin-top: 4rem;
+  padding: 1rem 2rem;
   background-color: white;
-  padding: 20px 30px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
-  min-width: 200px;
-  transition: transform 0.3s;
+  border-top: 1px solid #ddd;
 }
 
-.stat-card:hover {
-  transform: scale(1.05);
-}
-
-.stat-card h3 {
-  font-size: 2.5rem;
-  color: #ff6f00; /* Orange clair */
-  margin-bottom: 5px;
-}
-
-.stat-card p {
+.legend h4 {
+  text-align: left;
   font-size: 1.1rem;
   color: #333;
+  margin-bottom: 1rem;
 }
 
-.charts-section {
-  background-color: white;
-  padding: 30px;
+.legend-list {
+  display: flex;
+  flex-wrap: wrap;      
+  gap: 1rem;          
+  justify-content: center; 
+}
+
+.legend-item {
+  background-color: rgb(240, 238, 238);
+  padding: 0.4rem 0.8rem;
   border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  margin-bottom: 40px;
+  font-size: 0.95rem;
+  color: #555;
+  white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
-.chart-bar {
-  fill: #ff9f00; /* Couleur des barres pour les pré-déclassements */
-}
 
-.chart-bar-declassement {
-  fill: #ffcc80; /* Couleur des barres pour les déclassements */
-}

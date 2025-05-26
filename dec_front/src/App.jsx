@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';  // Syntaxe pour v5
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';  
 import Header from './components/Header';
 import SynthesePreDeclassement from './pages/SynthesePreDeclassement';
 import CreditsAmortissablesGeresSurLS from './pages/CreditsAmortissablesGeresSurLS';

@@ -1,85 +1,107 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './Accueil.css';
-import {
-  BarChart, Bar, XAxis, YAxis, Tooltip,
-  CartesianGrid, ResponsiveContainer
-} from 'recharts';
+import { Chart } from 'primereact/chart';
 
 const Accueil = () => {
-  const data = [
-    { name: 'Jan', pre: 20, dec: 10 },
-    { name: 'Fév', pre: 30, dec: 14 },
-    { name: 'Mars', pre: 45, dec: 22 },
-    { name: 'Avr', pre: 25, dec: 18 },
-    { name: 'Mai', pre: 35, dec: 20 },
-    { name: 'Juin', pre: 40, dec: 25 },
-    { name: 'Juil', pre: 38, dec: 19 },
-    { name: 'Août', pre: 32, dec: 21 },
-    { name: 'Sept', pre: 44, dec: 28 },
-    { name: 'Oct', pre: 50, dec: 30 },
-    { name: 'Nov', pre: 28, dec: 15 },
-    { name: 'Déc', pre: 33, dec: 17 },
+  const scrollRef = useRef(null);
+
+  const produits = {
+    "CPT-SEC": [12, 15, 18, 11, 14, 20, 23, 21, 19, 17, 16, 22],
+    "CPI/CVT": [10, 14, 12, 15, 13, 19, 21, 20, 18, 17, 15, 20],
+    "CAM-LS": [8, 12, 10, 13, 11, 15, 17, 16, 14, 13, 12, 16],
+    "CAM-SUP": [5, 7, 6, 8, 7, 10, 11, 10, 9, 8, 7, 10],
+    "SUSP-CCF": [6, 9, 8, 10, 9, 13, 14, 13, 12, 11, 10, 13],
+    "AFM": [7, 10, 9, 11, 10, 14, 15, 14, 13, 12, 11, 14],
+    "ESC": [4, 6, 5, 7, 6, 9, 10, 9, 8, 7, 6, 9],
+    "ASM-LS": [3, 5, 4, 6, 5, 8, 9, 8, 7, 6, 5, 8],
+    "ASM-AUT": [2, 4, 3, 5, 4, 7, 8, 7, 6, 5, 4, 7]
+  };
+
+  const fullNames = {
+    "CPT-SEC": "Compte(s) Secondaire(s)",
+    "CPI/CVT": "CPI(s)/CVT(s)",
+    "CAM-LS": "Crédit Amortissables géré sur LS",
+    "CAM-SUP": "Crédit Amortissables géré sur SUPRA",
+    "SUSP-CCF": "Suspension Crédit Co-Finance",
+    "AFM": "Crédit AFM",
+    "ESC": "Escompte(s)",
+    "ASM-LS": "ASM gérés sur LS",
+    "ASM-AUT": "Autres ASM"
+  };
+
+  const labels = ['Jan', 'Fév', 'Mars', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc'];
+
+  const colors = [
+    '#FFB74D', '#90CAF9', '#A5D6A7', '#CE93D8',
+    '#FF8A65', '#4DB6AC', '#FFF176', '#81D4FA', '#E6EE9C'
   ];
 
-  const totalPre = data.reduce((sum, item) => sum + item.pre, 0);
-  const totalDec = data.reduce((sum, item) => sum + item.dec, 0);
+  const lineData = {
+    labels,
+    datasets: Object.entries(produits).map(([key, data], index) => ({
+      label: key,
+      data,
+      fill: false,
+      borderColor: colors[index % colors.length],
+      tension: 0.4
+    }))
+  };
+
+  const doughnutData = {
+    labels: Object.keys(produits),
+    datasets: [
+      {
+        data: Object.values(produits).map(months => months.reduce((a, b) => a + b, 0)),
+        backgroundColor: colors,
+        hoverBackgroundColor: colors
+      }
+    ]
+  };
+
+ 
 
   return (
-    <div className="home-wrapper">
-      {/* Bienvenue stylisé */}
-      <section className="welcome-section">
-      <h1>Bienvenue sur l’application de gestion du pré-déclassement et du déclassement</h1>
-
-      <hr style={{
-  border: 'none',
-  borderTop: '1px solid #fff8',
-  margin: '10px 0 18px 0',
-  width: '60px'
-}} />
-<p>
-  Cette plateforme est conçue pour accompagner les équipes métiers dans le suivi complet du cycle de <strong>pré-déclassement</strong> et de <strong>déclassement</strong>. Elle permet d’analyser les produits à déclasser par client, de consulter une synthèse détaillée avec tous les attributs pertinents, d’exporter les tableaux récapitulatifs, et de gérer les différentes étapes de comptabilisation des dossiers. L’application offre également des outils de pilotage pour le suivi des situations en difficulté et la consultation des écritures comptables, garantissant ainsi un traitement fiable, fluide et centralisé.
-</p>
-
-
-
-
-      </section>
-
-      
-
-      {/* Graphique mensuel */}
-      <section className="charts-section">
-        <h2>Évolution mensuelle</h2>
-        <p>
-          Visualisez la progression mensuelle des opérations pour anticiper les tendances et
-          optimiser les processus.
-        </p>
-        <ResponsiveContainer width="100%" height={350}>
-          <BarChart data={data}>
-            <CartesianGrid stroke="#ccc" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Bar dataKey="pre" fill="#8884d8" name="Pré-déclassements" />
-            <Bar dataKey="dec" fill="#ff8042" name="Déclassements" />
-          </BarChart>
-        </ResponsiveContainer>
-      </section>
-
-      {/* Statistiques globales centrées */}
-      <section className="stats-section">
-        <h2>Statistiques globales</h2>
-        <div className="stat-cards">
-          <div className="stat-card">
-            <h3>{totalPre}</h3>
-            <p>Total pré-déclassements</p>
-          </div>
-          <div className="stat-card">
-            <h3>{totalDec}</h3>
-            <p>Total déclassements</p>
+    <div className="accueil-container">
+      <div className="charts-container">
+        <div className="left-chart">
+          <h3>Évolution mensuelle par produit</h3>
+         
+          <div className="scroll-panel" ref={scrollRef}>
+            <Chart
+              type="line"
+              data={lineData}
+              options={{ maintainAspectRatio: false }}
+              style={{ width: '1000px', height: '400px' }}
+            />
           </div>
         </div>
-      </section>
+
+        <div className="right-chart">
+          <h3>Répartition globale des déclassements</h3>
+          <div className="donut-container">
+            <Chart
+              type="doughnut"
+              data={doughnutData}
+              options={{ cutout: '70%' }}
+              style={{ width: '400px', height: '400px', margin: '0 auto' }}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="legend">
+  <h4>Légende des produits</h4>
+  <div className="legend-list">
+    {Object.entries(fullNames).map(([abbr, full]) => (
+      <div key={abbr} className="legend-item">
+        <strong>{abbr}</strong> : {full}
+      </div>
+    ))}
+  </div>
+</div>
+
+
+
     </div>
   );
 };

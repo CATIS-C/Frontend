@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { fetchCreditsClient, preDeclasser } from '../services/creditService';
+import ClientSignatureBand from '../components/ClientSignatureBand';
 import './CreditsAmortissablesGeresSurLS.css';
 
 const CreditsAmortissablesGeresSurLS = () => {
-  const [identifiant, setIdentifiant] = useState('ID-00123');
-  const [compte, setCompte] = useState('456789001234');
-  const [raisonSociale, setRaisonSociale] = useState('Société XYZ');
-  const [dossier, setDossier] = useState('DOS-789456');
+  const [referenceClient, setReferenceClient] = useState('');
+  const [compte, setCompte] = useState('');
+  const [raisonSociale, setRaisonSociale] = useState('');
   const [credits, setCredits] = useState([]);
 
   useEffect(() => {
-    
+    // ici tu peux charger les données initiales ou mettre à jour la date/heure si besoin
   }, []);
 
   const handleSearch = async () => {
     try {
-      const data = await fetchCreditsClient('typeRef', 'numRef');
+      const data = await fetchCreditsClient('NumeroClient', '2208407');
       setCredits(data);
+      // Supposons que les données retournées contiennent aussi les infos client
+      // setCompte(data.compte);
+      // setRaisonSociale(data.raisonSociale);
     } catch (error) {
       alert('Erreur lors de la recherche des crédits');
     }
@@ -33,28 +36,15 @@ const CreditsAmortissablesGeresSurLS = () => {
 
   return (
     <div className="credits-amortissables">
-      <h1>Crédits Amortissables Gérés sur LS</h1>
-
-      <div className="form-section">
-        <div className="input-row">
-          <label>Identifiant:</label>
-          <input type="text" value={identifiant} readOnly />
-
-          <label>Dossier:</label>
-          <input type="text" value={dossier} readOnly />
-        </div>
-        <div className="input-row">
-          <label>Compte N°:</label>
-          <input type="text" value={compte} readOnly />
-
-          <label>Raison Sociale:</label>
-          <input type="text" value={raisonSociale} readOnly />
-        </div>
-      </div>
-
-      <div className="btn-container">
-        <button className="back-btn" onClick={handleSearch}>Rechercher</button>
-      </div>
+      {/* Bande de signature réutilisable */}
+      <ClientSignatureBand
+        referenceClient={referenceClient}
+        setReferenceClient={setReferenceClient}
+        compte={compte}
+        raisonSociale={raisonSociale}
+        showSearchButton={true}
+        onSearch={handleSearch}
+      />
 
       <table>
         <thead>
@@ -75,12 +65,12 @@ const CreditsAmortissablesGeresSurLS = () => {
           ) : (
             credits.map((credit, index) => (
               <tr key={index}>
-                <td>{credit.numeroContrat}</td>
-                <td>{credit.sequence}</td>
-                <td>{credit.reference}</td>
-                <td>{credit.libelleProduit}</td>
-                <td>{credit.montant}</td>
-                <td>{credit.capitalRestantDu}</td>
+                <td>{credit.synthese.numero}</td>
+                <td>{credit.synthese.type}</td>
+                <td>{credit.synthese.numeroAutorisation}</td>
+                <td>{credit.synthese.libelleProduit}</td>
+                <td>{credit.synthese.montantAccorde}</td>
+                <td>{credit.synthese.montantCapitalRestantDu}</td>
               </tr>
             ))
           )}
