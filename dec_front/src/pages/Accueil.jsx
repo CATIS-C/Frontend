@@ -32,9 +32,16 @@ const Accueil = () => {
   const labels = ['Jan', 'Fév', 'Mars', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc'];
 
   const colors = [
-    '#FFB74D', '#90CAF9', '#A5D6A7', '#CE93D8',
-    '#FF8A65', '#4DB6AC', '#FFF176', '#81D4FA', '#E6EE9C'
-  ];
+  '#C8102E', 
+  '#F15A29', 
+  '#FFC72C',
+  '#E57373', 
+  '#FFB74D', 
+  '#FFF176', 
+  '#4B4B4B', 
+  '#A9A9A9', 
+  '#D1D3D4'  
+];
 
   const lineData = {
     labels,
