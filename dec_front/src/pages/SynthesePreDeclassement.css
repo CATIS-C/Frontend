@@ -113,17 +113,23 @@ body, html {
   justify-content: center;
   min-width: 35px;
   height: 24px;
-  background-color: #ff6600;
-  border-radius: 4px;
+  background: linear-gradient(135deg, #f5b06b, #f1aa47);
+  border-radius: 12px;
   margin-left: 10px;
+  box-shadow: 0 2px 6px rgba(53, 122, 189, 0.4);
+  color: white;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 0 10px;
+  letter-spacing: 0.5px;
 }
 
 .count {
+ 
   color: white;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 13px;
 }
-
 
 @media (max-width: 1024px) {
   .products-list {
