@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { fetchCreditsClient, preDeclasser } from '../services/creditService';
 import ClientSignatureBand from '../components/ClientSignatureBand';
-import Layout from '../components/Layout';  
+import Layout from '../components/Layout';
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
 import './CreditsAmortissablesGeresSurLS.css';
 
 const CreditsAmortissablesGeresSurLS = () => {
@@ -31,10 +33,7 @@ const CreditsAmortissablesGeresSurLS = () => {
   };
 
   return (
-    <Layout 
-      onPreDeclasser={handlePreDeclasser} 
-      footerTitle="Crédits Amortissables Gérés Sur LS"
-    >
+    <Layout onPreDeclasser={handlePreDeclasser} footerTitle="Crédits Amortissables Gérés Sur LS">
       <div className="credits-amortissables">
         <ClientSignatureBand
           referenceClient={referenceClient}
@@ -45,38 +44,22 @@ const CreditsAmortissablesGeresSurLS = () => {
           onSearch={handleSearch}
         />
 
-        <table>
-          <thead>
-            <tr>
-              <th>Libellé Produit</th>
-              <th>Numéro de Contrat</th>
-              <th>Séquence</th>
-              <th>Référence</th>
-              <th>Montant du prêt (MAD)</th>
-              <th>Capital Restant Dû (MAD)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {credits.length === 0 ? (
-              <tr>
-                <td colSpan="6" style={{ textAlign: 'center' }}>
-                  Aucun crédit disponible
-                </td>
-              </tr>
-            ) : (
-              credits.map((credit, index) => (
-                <tr key={index}>
-                  <td>{credit.synthese.libelleProduit}</td>
-                  <td>{credit.synthese.numero}</td>
-                  <td>{credit.synthese.type}</td>
-                  <td>{credit.synthese.numeroAutorisation}</td>
-                  <td>{credit.synthese.montantAccorde}</td>
-                  <td>{credit.synthese.montantCapitalRestantDu}</td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+        <DataTable
+  value={credits}
+  paginator
+  rows={5}
+  responsiveLayout="scroll"
+  emptyMessage="Aucun crédit disponible"
+  className="p-datatable-sm"
+>
+  <Column field="synthese.libelleProduit" header="Libellé Produit" /* sortable */ />
+  <Column field="synthese.numero" header="Numéro de Contrat" /* sortable */ />
+  <Column field="synthese.type" header="Séquence" /* sortable */ />
+  <Column field="synthese.numeroAutorisation" header="Référence" /* sortable */ />
+  <Column field="synthese.montantAccorde" header="Montant du prêt (MAD)" /* sortable */ />
+  <Column field="synthese.montantCapitalRestantDu" header="Capital Restant Dû (MAD)" /* sortable */ />
+</DataTable>
+
       </div>
     </Layout>
   );

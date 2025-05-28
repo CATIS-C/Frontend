@@ -1,6 +1,6 @@
 .footer-actions {
   display: flex;
-  justify-content: space-between; /* titre à gauche, boutons à droite */
+  justify-content: space-between; 
   align-items: center;
   padding: 15px 20px;
   background-color: #f8f8f8;
@@ -16,10 +16,10 @@
   font-weight: bold;
   font-size: 1.2rem;
   color: black;
-  border-left: 4px solid black; /* barre verticale noire à gauche */
+  border-left: 4px solid black; 
   padding-left: 10px;
-  margin: 0; /* supprime margin-bottom */
-  flex-grow: 1; /* prend tout l’espace à gauche */
+  margin: 0; 
+  flex-grow: 1; 
 }
 
 .footer-actions button {
