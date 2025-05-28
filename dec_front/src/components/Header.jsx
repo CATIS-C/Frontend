@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Dropdown } from 'primereact/dropdown'; 
-import { Tooltip } from 'primereact/tooltip';   
+import { Dropdown } from 'primereact/dropdown';   
 import './Header.css';
 
 
@@ -19,6 +18,11 @@ const logout = () => {
 
 const Header = () => {
   const location = useLocation();
+
+  const isSyntheseActive = () => {
+    return ['/spd', '/credits-amortissables-geres-sur-ls'].includes(location.pathname);
+  };
+
 
 
   const [darkMode, setDarkMode] = useState(false);
@@ -50,7 +54,7 @@ const Header = () => {
           <i className="pi pi-home" style={{ marginRight: 6 }}></i> Accueil
         </Link>
 
-        <Link to="/spd" className={location.pathname === '/spd' ? 'active' : ''}>
+      <Link to="/spd" className={isSyntheseActive() ? 'active' : ''}>
           <i className="pi pi-file" style={{ marginRight: 6 }}></i> Synthèse Pré-déclassement
         </Link>
 

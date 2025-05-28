@@ -31,7 +31,10 @@ const CreditsAmortissablesGeresSurLS = () => {
   };
 
   return (
-    <Layout onPreDeclasser={handlePreDeclasser}>
+    <Layout 
+      onPreDeclasser={handlePreDeclasser} 
+      footerTitle="Crédits Amortissables Gérés Sur LS"
+    >
       <div className="credits-amortissables">
         <ClientSignatureBand
           referenceClient={referenceClient}
@@ -41,10 +44,6 @@ const CreditsAmortissablesGeresSurLS = () => {
           showSearchButton={true}
           onSearch={handleSearch}
         />
-
-        <div className="page-header">
-          <h2 className="page-title">Crédits Amortissables Gérés Sur LS</h2>
-        </div>
 
         <table>
           <thead>
