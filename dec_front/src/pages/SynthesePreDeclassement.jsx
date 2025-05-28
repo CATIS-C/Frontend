@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import ClientSignatureBand from '../components/ClientSignatureBand';
+import Layout from '../components/Layout'; 
 import './SynthesePreDeclassement.css';
-import FooterActions from '../components/FooterActions';
 
 const SynthesePreDeclassement = () => {
   const [referenceClient, setReferenceClient] = useState('');
-  const [preDeclassement, setPreDeclassement] = useState('');
   const [compte, setCompte] = useState('');
   const [raisonSociale, setRaisonSociale] = useState('');
   const [currentDate, setCurrentDate] = useState('');
@@ -30,41 +29,44 @@ const SynthesePreDeclassement = () => {
     hist.goBack();
   };
 
+  
+
   return (
-    <div className="container">
-      <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '15px', fontWeight: 'bold' }}>
-        <div>{currentDate} &nbsp; <span style={{ color: '#ff6600' }}>{currentTime}</span></div>
-      </div>
+    <Layout onRetour={handleRetour}>
+      <div className="container">
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '15px', fontWeight: 'bold' }}>
+          <div>
+            {currentDate} &nbsp; <span style={{ color: '#ff6600' }}>{currentTime}</span>
+          </div>
+        </div>
 
-      <ClientSignatureBand
-        referenceClient={referenceClient}
-        setReferenceClient={setReferenceClient}
-        compte={compte}
-        raisonSociale={raisonSociale}
-        showSearchButton={false}
-      />
+        <ClientSignatureBand
+          referenceClient={referenceClient}
+          setReferenceClient={setReferenceClient}
+          compte={compte}
+          raisonSociale={raisonSociale}
+          showSearchButton={false}
+        />
 
-      <div className="synthese-section">
-        <h2 className="section-title">Produits</h2>
-        
-        <div className="products-list">
-          {natures.map((nature, index) => (
-            <div key={index} className="product-item">
-              <div className="product-info">
-                <Link to={nature.path} className="product-link">
-                  {nature.name}
-                </Link>
+        <div className="synthese-section">
+          <h2 className="section-title">Produits</h2>
+          <div className="products-list">
+            {natures.map((nature, index) => (
+              <div key={index} className="product-item">
+                <div className="product-info">
+                  <Link to={nature.path} className="product-link">
+                    {nature.name}
+                  </Link>
+                </div>
+                <div className="product-badge">
+                  <span className="count">{nature.count}</span>
+                </div>
               </div>
-              <div className="product-badge">
-                <span className="count">{nature.count}</span>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-
-      <FooterActions onRetour={handleRetour} />
-    </div>
+    </Layout>
   );
 };
 

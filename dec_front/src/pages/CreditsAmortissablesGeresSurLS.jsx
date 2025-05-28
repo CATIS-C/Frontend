@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { fetchCreditsClient, preDeclasser } from '../services/creditService';
 import ClientSignatureBand from '../components/ClientSignatureBand';
+import Layout from '../components/Layout';  
 import './CreditsAmortissablesGeresSurLS.css';
-import FooterActions from '../components/FooterActions';
 
 const CreditsAmortissablesGeresSurLS = () => {
   const [referenceClient, setReferenceClient] = useState('');
@@ -10,15 +10,12 @@ const CreditsAmortissablesGeresSurLS = () => {
   const [raisonSociale, setRaisonSociale] = useState('');
   const [credits, setCredits] = useState([]);
 
-  useEffect(() => {
-    
-  }, []);
+  useEffect(() => {}, []);
 
   const handleSearch = async () => {
     try {
       const data = await fetchCreditsClient('NumeroClient', '2208407');
       setCredits(data);
-      
     } catch (error) {
       alert('Erreur lors de la recherche des crédits');
     }
@@ -34,53 +31,55 @@ const CreditsAmortissablesGeresSurLS = () => {
   };
 
   return (
-    <div className="credits-amortissables">
-     
-      <ClientSignatureBand
-        referenceClient={referenceClient}
-        setReferenceClient={setReferenceClient}
-        compte={compte}
-        raisonSociale={raisonSociale}
-        showSearchButton={true}
-        onSearch={handleSearch}
-      />
-      <div className="page-header">
-      <h2 className="page-title">Crédits Amortissables Gérés Sur LS</h2>
-    </div>
+    <Layout onPreDeclasser={handlePreDeclasser}>
+      <div className="credits-amortissables">
+        <ClientSignatureBand
+          referenceClient={referenceClient}
+          setReferenceClient={setReferenceClient}
+          compte={compte}
+          raisonSociale={raisonSociale}
+          showSearchButton={true}
+          onSearch={handleSearch}
+        />
 
-      <table>
-        <thead>
-          <tr>
-            <th>Numéro de Contrat</th>
-            <th>Séquence</th>
-            <th>Référence</th>
-            <th>Libellé Produit</th>
-            <th>Montant du prêt (MAD)</th>
-            <th>Capital Restant Dû (MAD)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {credits.length === 0 ? (
+        <div className="page-header">
+          <h2 className="page-title">Crédits Amortissables Gérés Sur LS</h2>
+        </div>
+
+        <table>
+          <thead>
             <tr>
-              <td colSpan="6" style={{ textAlign: 'center' }}>Aucun crédit disponible</td>
+              <th>Libellé Produit</th>
+              <th>Numéro de Contrat</th>
+              <th>Séquence</th>
+              <th>Référence</th>
+              <th>Montant du prêt (MAD)</th>
+              <th>Capital Restant Dû (MAD)</th>
             </tr>
-          ) : (
-            credits.map((credit, index) => (
-              <tr key={index}>
-                <td>{credit.synthese.numero}</td>
-                <td>{credit.synthese.type}</td>
-                <td>{credit.synthese.numeroAutorisation}</td>
-                <td>{credit.synthese.libelleProduit}</td>
-                <td>{credit.synthese.montantAccorde}</td>
-                <td>{credit.synthese.montantCapitalRestantDu}</td>
+          </thead>
+          <tbody>
+            {credits.length === 0 ? (
+              <tr>
+                <td colSpan="6" style={{ textAlign: 'center' }}>
+                  Aucun crédit disponible
+                </td>
               </tr>
-            ))
-          )}
-        </tbody>
-      </table>
-
-      <FooterActions onPreDeclasser={handlePreDeclasser} />
-    </div>
+            ) : (
+              credits.map((credit, index) => (
+                <tr key={index}>
+                  <td>{credit.synthese.libelleProduit}</td>
+                  <td>{credit.synthese.numero}</td>
+                  <td>{credit.synthese.type}</td>
+                  <td>{credit.synthese.numeroAutorisation}</td>
+                  <td>{credit.synthese.montantAccorde}</td>
+                  <td>{credit.synthese.montantCapitalRestantDu}</td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
+    </Layout>
   );
 };
 

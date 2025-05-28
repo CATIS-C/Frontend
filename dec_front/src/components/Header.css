@@ -28,7 +28,7 @@ body{
 }
 
 .navbar .logo img {
-  width: 80px; 
+  width: 70px; 
   height: auto;
   margin-right: 20px;
 }
@@ -98,7 +98,7 @@ body{
 }
 
 .header-right > *:not(:last-child) {
-  border-right: 1px solid #ccc;  /* séparation verticale claire */
+  border-right: 1px solid #ccc;  
   padding-right: 15px;
 }
 

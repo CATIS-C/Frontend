@@ -73,12 +73,7 @@ const Header = () => {
   <span>{user.firstName} {user.lastName}</span>
 </div>
 
-
-        <button className="logout-btn" onClick={logout} title="Se déconnecter">
-          <i className="pi pi-power-off"></i>
-        </button>
-
-        <button 
+          <button 
           className="darkmode-toggle" 
           onClick={toggleDarkMode} 
           title={darkMode ? "Mode clair" : "Mode sombre"}
@@ -87,6 +82,12 @@ const Header = () => {
             ? <i className="pi pi-sun" style={{ color: '#ffb300' }}></i>
             : <i className="pi pi-moon" style={{ color: '#444' }}></i>}
         </button>
+        
+        <button className="logout-btn" onClick={logout} title="Se déconnecter">
+          <i className="pi pi-power-off"></i>
+        </button>
+
+      
       </div>
     </header>
   );

@@ -31,7 +31,7 @@ const Accueil = () => {
 
   const labels = ['Jan', 'Fév', 'Mars', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc'];
 
-  const colors = [
+const colors = [
   '#C8102E', 
   '#F15A29', 
   '#FFC72C',
@@ -42,7 +42,7 @@ const Accueil = () => {
   '#A9A9A9', 
   '#D1D3D4'  
 ];
-
+ 
   const lineData = {
     labels,
     datasets: Object.entries(produits).map(([key, data], index) => ({

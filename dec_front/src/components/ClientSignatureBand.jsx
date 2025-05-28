@@ -1,36 +1,47 @@
 import React from 'react';
+import { Button } from 'primereact/button';
 import './ClientSignatureBand.css';
 
 const ClientSignatureBand = ({ 
   referenceClient, 
-  setReferenceClient, 
-  compte, 
-  raisonSociale,
+  setReferenceClient,
+  onSearch
 }) => {
+  
+  const handleSearch = () => {
+    if (onSearch && referenceClient.trim()) {
+      onSearch(referenceClient.trim());
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
     <div className="client-signature-band">
       <div className="signature-row">
-        <div className="input-group">
-          <label>Référence client:</label>
-          <input
-            type="text"
-            placeholder="Entrez la référence"
-            value={referenceClient}
-            onChange={e => setReferenceClient(e.target.value)}
-          />
+        <div className="search-input-group">
+          <label>Référence Client :</label>
+          <div className="search-input-wrapper">
+            <input 
+              type="text" 
+              placeholder="Entrez la référence"
+              value={referenceClient}
+              onChange={e => setReferenceClient(e.target.value)}
+              onKeyPress={handleKeyPress}
+            />
+            <Button 
+              icon="pi pi-search" 
+              className="search-icon"
+              text
+              onClick={handleSearch}
+              disabled={!referenceClient.trim()}
+            />
+          </div>
         </div>
-        
-        <div className="input-group">
-          <label>Compte N°:</label>
-          <input type="text" value={compte} readOnly />
-        </div>
-        
-        <div className="input-group">
-          <label>Raison Sociale:</label>
-          <input type="text" value={raisonSociale} readOnly />
-        </div>
-        
-      
       </div>
     </div>
   );
