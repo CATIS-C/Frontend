@@ -15,8 +15,8 @@
 .footer-title {
   font-weight: bold;
   font-size: 1.2rem;
-  color: black;
-  border-left: 4px solid black; 
+  color: #ff6600;
+  border-left: 4px solid #ff6600; 
   padding-left: 10px;
   margin: 0; 
   flex-grow: 1; 

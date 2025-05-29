@@ -1,57 +1,55 @@
-
 .accueil-container {
   padding: 2rem;
   background: #fdfcfa;
   min-height: 100vh;
   font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .charts-container {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: flex-start;
 }
 
 .left-chart {
-  flex: 0 0 65%;
+  flex: 0 0 60%;
   background: #ffffff;
   border-radius: 20px;
-  padding: 2rem;
+  padding: 1.5rem;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-  min-width: 600px;
+  min-width: 500px;
 }
 
 .right-chart {
-  flex: 0 0 35%;
+  flex: 0 0 30%;
   background: #ffffff;
   border-radius: 20px;
-  padding: 2rem;
+  padding: 1.5rem;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-  min-width: 300px;
+  min-width: 250px;
 }
 
 h3 {
   text-align: center;
   color: #444;
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
 .scroll-panel {
-  position: relative;
-  overflow-x: hidden;  
-  overflow-y: hidden;
-  white-space: nowrap;
-  padding-bottom: 0;
+  overflow: visible;
   width: 100%;
 }
 
 .legend {
-  margin-top: 4rem;
-  padding: 1rem 2rem;
+  margin-top: 1rem;
+  padding: 1.5rem 2rem;
   background-color: white;
   border-top: 1px solid #ddd;
 }
@@ -65,112 +63,16 @@ h3 {
 
 .legend-list {
   display: flex;
-  flex-wrap: wrap;      
-  gap: 1rem;          
-  justify-content: center; 
-}
-
-.legend-item {
-  background-color: rgb(240, 238, 238);
-  padding: 0.4rem 0.8rem;
-  border-radius: 12px;
-  font-size: 0.95rem;
-  color: #555;
-  white-space: nowrap;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-
-/*
-
-.accueil-container {
-  padding: 2rem;
-  background: #fdfcfa;
-  min-height: 100vh;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-.charts-container {
-  display: flex;
-  gap: 2rem;
   flex-wrap: wrap;
+  gap: 1rem;
   justify-content: center;
 }
 
-.left-chart, .right-chart {
-  flex: 1 1 600px;
-  background: #ffffff;
-  border-radius: 20px;
-  padding: 2rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-  min-width: 600px;
-}
-
-h3 {
-  text-align: center;
-  color: #444;
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
-  font-weight: bold;
-}
-
-.scroll-panel {
-  position: relative;
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  padding-bottom: 10px;
-}
-
-.scroll-panel::-webkit-scrollbar {
-  height: 10px;
-}
-
-.scroll-panel::-webkit-scrollbar-thumb {
-  background-color: #b5b2b2;
-  border-radius: 10px;
-}
-
-
-
-.scroll-arrow.left {
-  left: 10px;
-}
-
-.scroll-arrow.right {
-  right: 10px;
-}
-
-.legend {
-  margin-top: 4rem;
-  padding: 1rem 2rem;
-  background-color: white;
-  border-top: 1px solid #ddd;
-}
-
-.legend h4 {
-  text-align: left;
-  font-size: 1.1rem;
-  color: #333;
-  margin-bottom: 1rem;
-}
-
-.legend-list {
-  display: flex;
-  flex-wrap: wrap;      
-  gap: 1rem;          
-  justify-content: center; 
-}
-
 .legend-item {
-  background-color: rgb(240, 238, 238);
   padding: 0.4rem 0.8rem;
   border-radius: 12px;
   font-size: 0.95rem;
-  color: #555;
+  color: white;
   white-space: nowrap;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
-
-
-*/

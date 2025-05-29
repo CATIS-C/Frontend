@@ -58,9 +58,12 @@ const SynthesePreDeclassement = () => {
                     {nature.name}
                   </Link>
                 </div>
-                <div className="product-badge">
-                  <span className="count">{nature.count}</span>
-                </div>
+               <div className={`product-badge ${nature.count === 0 ? 'zero' : ''}`}>
+                  <span className="count">{nature.count}
+
+                  </span>
+               </div>
+
               </div>
             ))}
           </div>
