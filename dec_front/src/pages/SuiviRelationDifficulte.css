@@ -1,7 +1,68 @@
-.page-container {
-    padding: 40px;
-    text-align: center;
-    font-size: 20px;
-    color: #333;
-  }
-  
+.srd-container {
+  width: 90%;
+  margin: 40px auto;
+  background: linear-gradient(135deg, #fcb045, #fd1d1d, #833ab4);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.srd-title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.srd-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  color: #333;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.srd-table thead {
+  background-color: #fcb045;
+  color: white;
+}
+
+.srd-table th, .srd-table td {
+  padding: 14px 20px;
+  text-align: left;
+  font-size: 16px;
+}
+
+.srd-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.srd-table tbody tr:hover {
+  background-color: #ffe8c2;
+}
+
+.statut {
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.statut.en {
+  background-color: #ffcc00;
+  color: #000;
+}
+
+.statut.validé {
+  background-color: #00cc66;
+  color: #fff;
+}
+
+.statut.rejeté {
+  background-color: #cc3300;
+  color: #fff;
+}

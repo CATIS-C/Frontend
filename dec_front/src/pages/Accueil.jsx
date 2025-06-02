@@ -30,17 +30,18 @@ const Accueil = () => {
   };
   
   const labels = ['Jan', 'Fév', 'Mars', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc'];
-  const colors = [
-    '#f28c8c',
-    '#f4b183',
-    '#f7e26b',
-    '#4caf50',
-    '#B3D9FF',
-    '#0074D9',
-    '#c89ee6',
-    '#FB8C00',
-    '#E53935'  
-  ];
+const colors = [
+  '#C8102E', 
+  '#F15A29', 
+  '#FFC72C',
+  '#E57373', 
+  '#FFB74D', 
+  '#FFF176', 
+  '#4B4B4B', 
+  '#A9A9A9', 
+  '#D1D3D4'  
+];
+ 
  
   const lineData = {
     labels,
